@@ -1,0 +1,57 @@
+<!-- wp:template-part {"slug":"header","tagName":"div"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"blockGap":"clamp(2rem, 4vw, 3rem)","padding":{"top":"0","left":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"4rem"}}},"layout":{"type":"constrained","wideSize":"1280px"}} -->
+<main class="wp-block-group" style="padding-top:0;padding-right:var(--wp--preset--spacing--40);padding-bottom:4rem;padding-left:var(--wp--preset--spacing--40)"><!-- wp:group {"align":"full","className":"cb-wash cb-page-head","layout":{"type":"constrained","wideSize":"1280px"}} -->
+<div class="wp-block-group alignfull cb-wash cb-page-head"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"0.75rem"}},"layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide"><!-- wp:query-title {"type":"archive","showPrefix":false} /-->
+
+<!-- wp:term-description /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"wide","className":"cb-justin","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide cb-justin"><!-- wp:group {"className":"cb-justin__side","layout":{"type":"default"}} -->
+<div class="wp-block-group cb-justin__side"><!-- wp:paragraph {"className":"cb-justin__filter"} -->
+<p class="cb-justin__filter">Browse by topic</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<nav class="cb-chips" aria-label="Topics"><a href="/">All posts</a><a href="/category/article/">Article</a><a href="/category/quick-post/">Quick post</a><a href="/category/tutorial/">Tutorial</a><a href="/category/ai/">AI</a><a href="/category/extension/">Extension</a><a href="/category/hacks/">Hacks</a><a href="/category/list/">List</a></nav>
+<!-- /wp:html --></div>
+<!-- /wp:group -->
+
+<!-- wp:query {"queryId":31,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"className":"cb-postlist"} -->
+<div class="wp-block-query cb-postlist"><!-- wp:post-template -->
+<!-- wp:group {"className":"cb-row","layout":{"type":"default"}} -->
+<div class="wp-block-group cb-row"><!-- wp:post-featured-image {"isLink":true,"sizeSlug":"medium_large"} /-->
+
+<!-- wp:group {"className":"cb-row__body","layout":{"type":"default"}} -->
+<div class="wp-block-group cb-row__body"><!-- wp:post-terms {"term":"category"} /-->
+
+<!-- wp:post-title {"level":3,"isLink":true} /-->
+
+<!-- wp:post-excerpt {"excerptLength":26} /-->
+
+<!-- wp:cloudblogger/post-stats {"items":["author","date","readtime","comments","likes"]} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"left"}} -->
+<!-- wp:query-pagination-previous {"label":"Newer posts"} /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next {"label":"Explore more articles"} /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>Nothing here yet.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"div"} /-->
