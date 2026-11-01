@@ -1,5 +1,5 @@
 === Googlish ===
-Version: 2.7.11
+Version: 2.7.12
 Requires at least: 6.5
 Requires PHP: 7.4
 License: GPLv2 or later

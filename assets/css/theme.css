@@ -829,7 +829,7 @@ body.cb-no-scroll { overflow: hidden; }
 
 /* Old posts used H1 for sections: read them like H2 */
 .cb-prose h1 { font-size: 1.875rem; font-weight: 450; margin-top: 3rem; letter-spacing: -.015em; line-height: 1.2; }
-.cb-article__body > :has(.wp-block-jetpack-subscriptions) { order: 4; }
+.cb-article__body > :not(.cb-prose):has(.wp-block-jetpack-subscriptions) { order: 4; }
 :is(.cb-subscribe, .cb-article__body > :not(.cb-prose):has(.wp-block-jetpack-subscriptions)) .wp-block-jetpack-subscriptions { margin-left: 0 !important; margin-right: 0 !important; max-width: 560px !important; }
 :is(.cb-subscribe, .cb-article__body > :not(.cb-prose):has(.wp-block-jetpack-subscriptions)) form, :is(.cb-subscribe, .cb-article__body > :not(.cb-prose):has(.wp-block-jetpack-subscriptions)) .wp-block-jetpack-subscriptions__container { width: 100% !important; max-width: 560px; }
 :is(.cb-subscribe, .cb-article__body > :not(.cb-prose):has(.wp-block-jetpack-subscriptions)) form > .wp-block-jetpack-subscriptions__form-elements { flex: 1 1 100%; display: flex !important; flex-wrap: wrap; gap: .5rem; }
@@ -1103,3 +1103,10 @@ body.cb-no-scroll { overflow: hidden; }
 /* Tables in posts: compact and wrapping, so wide comparison tables fit the column instead of scrolling sideways */
 .cb-prose .wp-block-table table { font-size: .875rem; line-height: 1.45; width: 100%; }
 .cb-prose .wp-block-table :is(th, td) { padding: .55rem .65rem; overflow-wrap: anywhere; vertical-align: top; }
+
+/* The post text always comes first, even when a subscribe box is saved inside it */
+.cb-article__body > .cb-prose { order: 1 !important; }
+.cb-article__body > .cb-toc-mobile { order: 0 !important; }
+.cb-prose > .wp-block-jetpack-subscriptions { margin-top: 3rem !important; }
+/* A subscribe box saved inside an old post duplicates the one Jetpack adds after every post: hide the inner one */
+.cb-article__body:has(> :not(.cb-prose) .wp-block-jetpack-subscriptions) .cb-prose > .wp-block-jetpack-subscriptions { display: none !important; }

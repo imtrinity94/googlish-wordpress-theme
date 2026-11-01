@@ -3,6 +3,12 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.7.12] - 2026-11-01
+
+### Fixed
+- On posts with a Jetpack subscribe box saved inside the post content, the whole article was moved below the Like button and feedback, so "Enjoyed this post?" appeared before the post started. The post text now always comes first.
+- Those posts also showed two subscribe boxes. The one inside the post is hidden when Jetpack adds its own after the post.
+
 ## [2.7.11] - 2026-11-01
 
 ### Fixed
