@@ -778,9 +778,11 @@
 		if (!body) { return; }
 		var sub = body.querySelector('.wp-block-jetpack-subscriptions');
 		if (sub) {
+			// Style the subscribe box's own wrapper. Stop at the post text: on some posts Jetpack puts the
+			// box inside the post content, and the whole article must never become the card.
 			var card = sub;
-			while (card.parentElement && card.parentElement !== body) { card = card.parentElement; }
-			card.classList.add('cb-subscribe');
+			while (card.parentElement && card.parentElement !== body && !card.parentElement.classList.contains('cb-prose')) { card = card.parentElement; }
+			if (!card.classList.contains('cb-prose')) { card.classList.add('cb-subscribe'); }
 		}
 	}
 

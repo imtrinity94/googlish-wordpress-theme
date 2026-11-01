@@ -3,6 +3,14 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.7.11] - 2026-11-01
+
+### Fixed
+- On posts where Jetpack places the subscribe box inside the post content, the whole article was styled as the subscribe card (gradient background and padding). Only the subscribe box is styled now.
+
+### Changed
+- Tables in posts are more compact and wrap long words, so wide comparison tables fit the column.
+
 ## [2.7.10] - 2026-11-01
 
 ### Fixed

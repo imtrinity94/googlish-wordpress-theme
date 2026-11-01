@@ -1096,3 +1096,10 @@ body.cb-no-scroll { overflow: hidden; }
 @media (max-width: 1199px) {
 	.cb-feature__text { height: auto !important; min-height: 0 !important; }
 }
+
+/* Safety: the post text itself is never styled as the subscribe card */
+.cb-prose.cb-subscribe { background: none !important; padding: 0 !important; border-radius: 0 !important; overflow: visible !important; }
+
+/* Tables in posts: compact and wrapping, so wide comparison tables fit the column instead of scrolling sideways */
+.cb-prose .wp-block-table table { font-size: .875rem; line-height: 1.45; width: 100%; }
+.cb-prose .wp-block-table :is(th, td) { padding: .55rem .65rem; overflow-wrap: anywhere; vertical-align: top; }
