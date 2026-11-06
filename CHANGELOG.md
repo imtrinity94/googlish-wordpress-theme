@@ -3,6 +3,12 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.7.13] - 2026-11-07
+
+### Fixed
+- Phones and tablets: long unbroken words in posts (package names, file names, URLs) ran off the screen. They now wrap.
+- Phones and tablets: images resized in the editor were squashed, because their saved height stayed fixed while the width shrank. They now keep their proportions.
+
 ## [2.7.12] - 2026-11-01
 
 ### Fixed

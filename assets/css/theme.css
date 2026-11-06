@@ -1110,3 +1110,15 @@ body.cb-no-scroll { overflow: hidden; }
 .cb-prose > .wp-block-jetpack-subscriptions { margin-top: 3rem !important; }
 /* A subscribe box saved inside an old post duplicates the one Jetpack adds after every post: hide the inner one */
 .cb-article__body:has(> :not(.cb-prose) .wp-block-jetpack-subscriptions) .cb-prose > .wp-block-jetpack-subscriptions { display: none !important; }
+
+/* Phones and tablets only (desktop untouched) */
+@media (max-width: 1099px) {
+	/* Long unbroken words in posts (file names, package names, URLs) wrap instead of running off the screen */
+	.cb-prose :is(p, li, dd, dt, figcaption, blockquote, h2, h3, h4) { overflow-wrap: break-word; }
+	.cb-prose a { overflow-wrap: anywhere; word-break: break-word; }
+	/* Images resized in the editor carry a fixed width and height; when the width shrinks to fit, keep the proportions */
+	.cb-prose img { max-width: 100%; height: auto !important; }
+	.cb-prose .wp-block-image.is-resized img, .cb-prose .wp-block-image img[style*="width"] { width: auto; max-width: 100% !important; }
+	.cb-prose .wp-block-image.is-resized { max-width: 100%; }
+	.cb-prose figure.wp-block-image { margin-left: 0; margin-right: 0; }
+}
