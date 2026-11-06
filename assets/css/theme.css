@@ -1122,3 +1122,8 @@ body.cb-no-scroll { overflow: hidden; }
 	.cb-prose .wp-block-image.is-resized { max-width: 100%; }
 	.cb-prose figure.wp-block-image { margin-left: 0; margin-right: 0; }
 }
+
+/* All screen sizes: images resized in the editor keep their proportions when the column is narrower than their saved width */
+.cb-prose img { max-width: 100%; height: auto !important; }
+.cb-prose .wp-block-image.is-resized img, .cb-prose .wp-block-image img[style*="width"] { max-width: 100% !important; }
+.cb-prose .wp-block-image.is-resized { max-width: 100%; }

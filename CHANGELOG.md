@@ -3,6 +3,11 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.7.14] - 2026-11-07
+
+### Fixed
+- Desktop too: images resized in the editor to a width larger than the text column were squashed. They now keep their proportions on every screen size.
+
 ## [2.7.13] - 2026-11-07
 
 ### Fixed
