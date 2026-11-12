@@ -3,6 +3,18 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.9.2] - 2026-11-12
+
+Googlish now renders cloudblogger.co.in exactly, with all personal content in the separate Googlish Personal plugin. Version numbers jump to 2.9.2 so Googlish and the old CloudBlogger releases share one line from here on.
+
+### Added
+- Header and footer are now patterns (`cloudblogger/header`, `cloudblogger/footer`) that the template parts load, so a plugin can replace them without editing the theme.
+- Portrait card styling for the home author section (`.cb-portrait`).
+- Labels use the site's own name: "More from <site name>" after posts and "Search <site name>" in search boxes. Filters: `googlish_related_title`, `googlish_search_placeholder`.
+
+### Changed
+- Release zips unpack to a folder named `googlish`, so updates replace the installed theme.
+
 ## [2.8.2] - 2026-11-12
 
 ### Changed

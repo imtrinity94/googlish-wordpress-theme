@@ -173,6 +173,22 @@ Select the search icon in the Header and change **Placeholder** in the block set
 
 ---
 
+## 5b. Keep your details outside the theme (optional)
+
+The header, footer, author section and tools section are patterns. A companion plugin can replace them with your own content, so you never edit the theme and every update is a plain "Replace current with uploaded".
+
+The plugin reads everything from one file, `data/profile.json`:
+
+| Key | What it holds |
+| --- | --- |
+| `site` | Wordmark text and grey ending, search placeholder, X handle for shares |
+| `nav` | Top bar links (`label`, `url`, optional `newTab`) |
+| `author` | Kicker, name, role, bio, photo (plugin file or full URL), social links, badges |
+| `tools` | Section title and line, button, and cards (`name`, `url`, `description`, `color`) |
+| `footer` | Links, social icons, copyright line |
+
+The plugin swaps these theme patterns: `cloudblogger/header`, `cloudblogger/footer`, `cloudblogger/home-author`, `cloudblogger/home-tools`.
+
 ## 6. Make the home page yours
 
 The home page is made of seven sections, each a pattern you can edit, reorder or remove.

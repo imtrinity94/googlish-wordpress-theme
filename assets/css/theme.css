@@ -1159,3 +1159,26 @@ body.cb-no-scroll { overflow: hidden; }
 	content: ""; display: block; aspect-ratio: 1200 / 630; border-radius: var(--cb-r); margin-bottom: .75rem;
 	background: radial-gradient(60% 80% at 20% 15%, rgba(255, 255, 255, .55), transparent 70%), var(--cb-gradient-soft, linear-gradient(135deg, #d2e3fc, #e9dcff));
 }
+
+/* ---------- Author portrait (home page) ---------- */
+.cb-portrait {
+	position: relative; isolation: isolate; margin: 0; width: clamp(210px, 22vw, 290px); aspect-ratio: 4 / 5; padding: 6px; border-radius: 30px;
+	box-shadow: 0 24px 48px -18px rgba(32, 33, 36, .35), 0 2px 6px rgba(32, 33, 36, .08);
+}
+.cb-portrait::before {
+	content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+	background: conic-gradient(from var(--cb-ring-a, 0deg), #2f7bf6, #7c5cfa, #e2659f, #f6b26b, #2f7bf6); animation: cb-ring 8s linear infinite;
+}
+.cb-portrait::after {
+	content: ""; position: absolute; inset: -18% -14% auto; height: 70%; z-index: -2; border-radius: 50%;
+	background: radial-gradient(closest-side, var(--cb-glow-1), transparent); filter: blur(8px); pointer-events: none;
+}
+.cb-portrait img {
+	display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%;
+	border-radius: 24px; border: 4px solid var(--cb-surface); background: var(--cb-surface);
+}
+@media (prefers-reduced-motion: reduce) { .cb-portrait::before { animation: none; } }
+@media (max-width: 760px) {
+	.cb-portrait { width: min(220px, 62vw); margin-inline: auto; }
+	.cb-author-band__grid { text-align: left; }
+}

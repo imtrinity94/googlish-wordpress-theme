@@ -8,7 +8,7 @@ A WordPress block theme for technical blogs, styled after Google's blogs and Goo
 
 **New here? Read the [setup and customisation guide](docs/GUIDE.md).**
 
-Current version: **2.8.2**. See [CHANGELOG.md](CHANGELOG.md).
+Current version: **2.9.2**. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Screenshots
 
@@ -82,6 +82,10 @@ The theme runs [cloudblogger.co.in](https://cloudblogger.co.in/). Have a look at
 | `cloudblogger/share` | Share menu: copy link, LinkedIn, X, WhatsApp, Telegram, Reddit, email |
 | `cloudblogger/like` | Like button |
 | `cloudblogger/feedback` | "Was this helpful?" with Send feedback |
+
+## Make it yours with Googlish Personal
+
+Your name, photo, bio, social links, badges, tools, header and footer can live in a small companion plugin instead of the theme. The plugin reads one data file and swaps its content into the theme's header, footer and home sections, so theme updates never overwrite your details. See the [guide](docs/GUIDE.md).
 
 ## Install
 

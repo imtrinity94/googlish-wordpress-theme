@@ -182,3 +182,28 @@ function cb_main_query_ignore_sticky( $q ) {
 	}
 }
 add_action( 'pre_get_posts', 'cb_main_query_ignore_sticky' );
+
+
+/**
+ * Labels that carry the site's own name: "More from <site name>" and "Search <site name>".
+ * A personal plugin can change them with the 'googlish_related_title' and
+ * 'googlish_search_placeholder' filters.
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Block.
+ * @return string
+ */
+function cb_site_name_labels( $html, $block ) {
+	if ( 'core/heading' === $block['blockName'] && false !== strpos( $html, 'More from the blog' ) ) {
+		/* translators: %s: site name */
+		$title = apply_filters( 'googlish_related_title', sprintf( __( 'More from %s', 'cloudblogger' ), get_bloginfo( 'name' ) ) );
+		return str_replace( 'More from the blog', esc_html( $title ), $html );
+	}
+	if ( 'core/search' === $block['blockName'] && isset( $block['attrs']['placeholder'] ) && 'Search' === $block['attrs']['placeholder'] ) {
+		/* translators: %s: site name */
+		$text = apply_filters( 'googlish_search_placeholder', sprintf( __( 'Search %s', 'cloudblogger' ), get_bloginfo( 'name' ) ) );
+		return str_replace( 'placeholder="Search"', 'placeholder="' . esc_attr( $text ) . '"', $html );
+	}
+	return $html;
+}
+add_filter( 'render_block', 'cb_site_name_labels', 10, 2 );
