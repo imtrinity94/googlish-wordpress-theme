@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CB_THEME_VERSION', '2.9.2' );
+define( 'CB_THEME_VERSION', '2.9.3' );
 
 require_once get_template_directory() . '/inc/setup.php';
 require_once get_template_directory() . '/inc/blocks.php';

@@ -3,6 +3,11 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.9.3] - 2026-11-12
+
+### Fixed
+- New posts showed no view count for hours. The theme saved "no views yet" from the first moments after publishing for up to an hour, and zero for six hours, and zero counts are hidden. Now no answer or zero is rechecked every 15 minutes, posts from the last week every 30 minutes, and older posts every 6 hours. Counts cached by earlier versions are ignored, so the fix shows straight after updating.
+
 ## [Docs] - 2026-11-12
 
 ### Added

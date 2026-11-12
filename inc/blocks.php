@@ -74,7 +74,7 @@ function cb_read_minutes( $post ) {
  * @return int|null
  */
 function cb_post_views( $post_id ) {
-	$key    = 'cb_views_' . $post_id;
+	$key    = 'cb_views2_' . $post_id;
 	$cached = get_transient( $key );
 	if ( false !== $cached ) {
 		return '' === $cached ? null : (int) $cached;
@@ -93,7 +93,16 @@ function cb_post_views( $post_id ) {
 	} catch ( \Throwable $e ) {
 		$views = null;
 	}
-	set_transient( $key, null === $views ? '' : $views, null === $views ? HOUR_IN_SECONDS : 6 * HOUR_IN_SECONDS );
+	// Keep counts fresh: no answer or zero views is rechecked in 15 minutes, posts from the last week every 30 minutes,
+	// older posts every 6 hours.
+	if ( null === $views || 0 === $views ) {
+		$ttl = 15 * MINUTE_IN_SECONDS;
+	} elseif ( (int) get_post_time( 'U', true, $post_id ) > time() - WEEK_IN_SECONDS ) {
+		$ttl = 30 * MINUTE_IN_SECONDS;
+	} else {
+		$ttl = 6 * HOUR_IN_SECONDS;
+	}
+	set_transient( $key, null === $views ? '' : $views, $ttl );
 	return $views;
 }
 
