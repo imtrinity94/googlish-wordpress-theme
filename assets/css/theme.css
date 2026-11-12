@@ -1148,3 +1148,14 @@ body.cb-no-scroll { overflow: hidden; }
 .cb-appear { animation: cb-appear .35s ease-out both; }
 @keyframes cb-appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .cb-appear, .cb-loadmore__btn.is-loading::before { animation: none; } }
+
+/* Posts without a featured image: a soft gradient placeholder takes the banner's place, so cards keep their shape */
+.cb-feature__grid:not(:has(.cb-feature__media))::after {
+	content: ""; display: block; aspect-ratio: 1200 / 630; align-self: center; border-radius: var(--cb-r-lg);
+	background: radial-gradient(60% 80% at 20% 15%, rgba(255, 255, 255, .55), transparent 70%), var(--cb-gradient-soft, linear-gradient(135deg, #d2e3fc, #e9dcff));
+}
+@media (max-width: 900px) { .cb-feature__grid:not(:has(.cb-feature__media))::after { display: none; } }
+.cb-card-post:not(:has(.wp-block-post-featured-image))::before {
+	content: ""; display: block; aspect-ratio: 1200 / 630; border-radius: var(--cb-r); margin-bottom: .75rem;
+	background: radial-gradient(60% 80% at 20% 15%, rgba(255, 255, 255, .55), transparent 70%), var(--cb-gradient-soft, linear-gradient(135deg, #d2e3fc, #e9dcff));
+}

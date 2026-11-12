@@ -3,6 +3,11 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.8.1] - 2026-11-12
+
+### Fixed
+- Home page, wide screens: when the newest post has no featured image, the featured story collapsed to a thin strip showing only its category label. A soft gradient placeholder now takes the banner's place, so the card shows in full. Post cards without an image get the same placeholder.
+
 ## [2.8.0] - 2026-11-12
 
 ### Added
