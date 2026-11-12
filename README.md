@@ -8,7 +8,7 @@ A WordPress block theme for technical blogs, styled after Google's blogs and Goo
 
 **New here? Read the [setup and customisation guide](docs/GUIDE.md).**
 
-Current version: **2.8.1**. See [CHANGELOG.md](CHANGELOG.md).
+Current version: **2.8.2**. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Screenshots
 
@@ -108,6 +108,8 @@ If a template doesn't change after an update, it has saved customisations from t
 The author block, tools, nav links and footer links ship with placeholder content ("Your Name", "yourhandle", "Project one"). Replace it in the Site Editor, or in `patterns/` and `parts/`. The [guide](docs/GUIDE.md) walks through every section.
 
 ## Credits
+
+- Created by **Mayank Goyal** ([@imtrinity94](https://github.com/imtrinity94)).
 
 - Google Sans Flex and Google Sans Code: Google LLC, SIL Open Font License 1.1 (`assets/fonts/OFL.txt`).
 - highlight.js 11.12.0: BSD-3-Clause (`assets/vendor/highlight-LICENSE.txt`).

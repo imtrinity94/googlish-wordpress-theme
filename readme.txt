@@ -1,5 +1,6 @@
 === Googlish ===
-Version: 2.8.1
+Version: 2.8.2
+Author: Mayank Goyal
 Requires at least: 6.5
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -62,6 +63,8 @@ Old paragraphs with the class "critical" (also note, tip, important, caution, wa
 Post stats, Blog stats, Must read, Random posts, Recent comments, Share post, Like button and Was this helpful? (category: Theme).
 
 == Credits ==
+
+* Created by Mayank Goyal (https://github.com/imtrinity94).
 
 * Google Sans Flex and Google Sans Code, Google LLC, SIL Open Font License 1.1 (assets/fonts/OFL.txt).
 * highlight.js 11.12.0, BSD-3-Clause (assets/vendor/highlight-LICENSE.txt).

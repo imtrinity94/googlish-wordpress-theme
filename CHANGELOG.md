@@ -3,6 +3,11 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.8.2] - 2026-11-12
+
+### Changed
+- Theme author set to Mayank Goyal (style.css, readme.txt, README credits).
+
 ## [2.8.1] - 2026-11-12
 
 ### Fixed
