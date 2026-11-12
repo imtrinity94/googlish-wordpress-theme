@@ -6,7 +6,7 @@ A WordPress block theme for technical blogs, styled after Google's blogs and Goo
 
 **Live example: [cloudblogger.co.in](https://cloudblogger.co.in/)**, a blog on VCF Automation and VCF Operations Orchestrator. It runs on WordPress.com (Business plan).
 
-**New here? Read the [setup and customisation guide](docs/GUIDE.md).**
+**New here? Start with the [setup guide](docs/SETUP.md) (theme + plugin, about 30 minutes), then the [writing and customisation guide](docs/GUIDE.md).**
 
 Current version: **2.9.2**. See [CHANGELOG.md](CHANGELOG.md).
 
@@ -83,19 +83,25 @@ The theme runs [cloudblogger.co.in](https://cloudblogger.co.in/). Have a look at
 | `cloudblogger/like` | Like button |
 | `cloudblogger/feedback` | "Was this helpful?" with Send feedback |
 
-## Make it yours with Googlish Personal
+## Quick start: theme + plugin
 
-Your name, photo, bio, social links, badges, tools, header and footer can live in a small companion plugin instead of the theme. The plugin reads one data file and swaps its content into the theme's header, footer and home sections, so theme updates never overwrite your details. See the [guide](docs/GUIDE.md).
+Googlish is two pieces:
 
-## Install
+- **The theme** (`googlish`): layout, design and every feature. You never edit it, you only update it.
+- **The Googlish Personal plugin** ([`plugin/googlish-personal`](plugin/googlish-personal)): your name, photo, bio, social links, badges, projects, header and footer, all in one file, [`data/profile.json`](plugin/googlish-personal/data/profile.json).
 
-1. Download this repository as a zip (Code → Download ZIP).
-2. In WordPress: Appearance → Themes → Add New → Upload Theme, choose the zip. If the theme is already installed, choose "Replace current with uploaded".
-3. Activate it.
+Everything else comes from your WordPress content: posts, excerpts, featured images, categories, tags, sticky posts, comments and Jetpack stats.
 
-On WordPress.com this needs a plan that allows uploading themes (Business or higher).
+1. Edit `plugin/googlish-personal/data/profile.json` with your details, put your photo in `plugin/googlish-personal/assets/`, then zip the `googlish-personal` folder.
+2. Zip the theme with its folder named `googlish`.
+3. In WordPress, upload and activate the plugin (Plugins → Add New Plugin → Upload), then the theme (Appearance → Themes → Upload → Live Preview → Activate).
+4. Check the WordPress settings in the [setup guide](docs/SETUP.md#6-wordpress-settings-to-check-once).
 
-If a template doesn't change after an update, it has saved customisations from the Site Editor. Open Appearance → Editor → Templates, pick the template and choose Reset.
+Updates: upload a new theme zip with **Replace current with uploaded**. Your details stay put because they live in the plugin.
+
+On WordPress.com this needs a plan that allows uploading themes and plugins (Business or higher).
+
+The [setup guide](docs/SETUP.md) explains every field in `profile.json` and lists what the theme picks up from WordPress on its own.
 
 ## Where feedback and likes are stored
 
@@ -106,10 +112,6 @@ If a template doesn't change after an update, it has saved customisations from t
 ## Recommended plugins
 
 - Jetpack (Stats for views and Must read; Likes for the existing like counts). Both are built in on WordPress.com.
-
-## Customising for your own blog
-
-The author block, tools, nav links and footer links ship with placeholder content ("Your Name", "yourhandle", "Project one"). Replace it in the Site Editor, or in `patterns/` and `parts/`. The [guide](docs/GUIDE.md) walks through every section.
 
 ## Credits
 

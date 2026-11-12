@@ -3,6 +3,13 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [Docs] - 2026-11-12
+
+### Added
+- `docs/SETUP.md`: step-by-step setup with the theme plus the Googlish Personal plugin, every field in `profile.json`, and what the theme takes from WordPress on its own.
+- `plugin/googlish-personal`: the companion plugin (1.0.1) with sample placeholder data, ready to fill in.
+- README quick start for theme + plugin.
+
 ## [2.9.2] - 2026-11-12
 
 Googlish now renders cloudblogger.co.in exactly, with all personal content in the separate Googlish Personal plugin. Version numbers jump to 2.9.2 so Googlish and the old CloudBlogger releases share one line from here on.

@@ -2,6 +2,8 @@
 
 This guide takes you from a fresh install to a blog that carries your own name, links, colours and writing style. It assumes no coding. The last sections cover file-level changes for people who want them.
 
+New to Googlish? Install the theme and the Googlish Personal plugin with the [setup guide](SETUP.md) first. This guide covers everything after that.
+
 Examples use placeholders such as **Your Name**, **your-site.com** and **@yourhandle**. Replace them with your own details.
 
 ---

@@ -1,0 +1,125 @@
+{
+  "_about": "All personal content for the Googlish theme. Edit this file, not the theme. Paths starting with assets/ point to files in this plugin; full URLs work too.",
+  "site": {
+    "wordmark": "YourSite",
+    "wordmark_suffix": ".com",
+    "search_placeholder": "",
+    "x_handle": ""
+  },
+  "nav": [
+    {
+      "label": "Latest",
+      "url": "/"
+    },
+    {
+      "label": "Articles",
+      "url": "/category/article/"
+    },
+    {
+      "label": "Quick posts",
+      "url": "/category/quick-post/"
+    },
+    {
+      "label": "About",
+      "url": "/about/"
+    },
+    {
+      "label": "Projects",
+      "url": "/projects/"
+    }
+  ],
+  "author": {
+    "kicker": "Hi, I’m",
+    "name": "Your Name",
+    "role": "Engineer, writer and tinkerer",
+    "bio": "Write two or three sentences about what you work on and what readers will find here.",
+    "photo": "assets/author-portrait.jpg",
+    "photo_small": "assets/author-portrait-400.jpg",
+    "photo_alt": "Your Name",
+    "show_site_stats": true,
+    "socials": [
+      {
+        "key": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/yourhandle/"
+      },
+      {
+        "key": "github",
+        "label": "GitHub",
+        "url": "https://github.com/yourhandle"
+      },
+      {
+        "key": "youtube",
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@yourhandle"
+      },
+      {
+        "key": "x",
+        "label": "X",
+        "url": "https://x.com/yourhandle"
+      }
+    ],
+    "badges_label": "Certifications and honors",
+    "badges": [
+      {
+        "name": "Example certification",
+        "issuer": "Issuer",
+        "url": "https://example.com/verify",
+        "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 88'%3E%3Ccircle cx='44' cy='44' r='40' fill='%23e8f0fe'/%3E%3Cpath d='M44 20l7 14 15 2-11 11 3 15-14-7-14 7 3-15-11-11 15-2z' fill='%231a6ae8'/%3E%3C/svg%3E"
+      }
+    ]
+  },
+  "tools": {
+    "title": "Things I've built",
+    "lede": "Free projects and utilities I maintain.",
+    "button_label": "All projects on GitHub",
+    "button_url": "https://github.com/yourhandle",
+    "items": [
+      {
+        "name": "Project one",
+        "url": "https://example.com/",
+        "description": "A one-line description of what it does and who it is for.",
+        "color": "blue"
+      },
+      {
+        "name": "Project two",
+        "url": "https://example.com/",
+        "description": "A command-line helper that saves a few minutes every day.",
+        "color": "violet"
+      },
+      {
+        "name": "Project three",
+        "url": "https://example.com/",
+        "description": "A browser extension that fixes one annoying thing.",
+        "color": "teal"
+      }
+    ]
+  },
+  "footer": {
+    "links": [
+      {
+        "label": "About",
+        "url": "/about/"
+      },
+      {
+        "label": "RSS feed",
+        "url": "/feed/"
+      }
+    ],
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/yourhandle/",
+        "service": "linkedin"
+      },
+      {
+        "url": "https://x.com/yourhandle",
+        "service": "x"
+      },
+      {
+        "url": "https://github.com/yourhandle",
+        "service": "github"
+      }
+    ],
+    "copyright": "© Your Name. Product and brand names are trademarks of their respective holders."
+  }
+}
