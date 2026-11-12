@@ -3,6 +3,11 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.8.0] - 2026-11-12
+
+### Added
+- "Load more" for post lists: the home page "Just in" list and category, tag, archive and search pages add the next set of posts in place, without reloading the page (like the "Load more" button on Google's blogs). The page links stay in the HTML for search engines and fall back automatically if loading fails.
+
 ## [2.7.14] - 2026-11-07
 
 ### Fixed

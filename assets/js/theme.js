@@ -631,6 +631,89 @@
 	}
 
 	/* ---------------- "More from the blog": hide the post you're reading ---------------- */
+	/* ---------------- Load more: next page of a post list appears in place, no page reload ---------------- */
+	function initLoadMore() {
+		if (!window.fetch || !window.DOMParser) { return; }
+		Array.prototype.forEach.call(doc.querySelectorAll('.wp-block-query'), function (query) {
+			var pager = query.querySelector('.wp-block-query-pagination');
+			var list = query.querySelector('.wp-block-post-template');
+			var next = pager && pager.querySelector('.wp-block-query-pagination-next');
+			if (!pager || !list || !next) { return; }
+			var nextUrl = next.href;
+			var key = (nextUrl.match(/[?&](query-\d+-page)=/) || [])[1] || '';
+
+			var wrap = doc.createElement('div');
+			wrap.className = 'cb-loadmore';
+			var btn = doc.createElement('button');
+			btn.type = 'button';
+			btn.className = 'cb-loadmore__btn';
+			btn.textContent = t('loadMore', 'Load more');
+			var status = doc.createElement('p');
+			status.className = 'cb-loadmore__status';
+			status.setAttribute('aria-live', 'polite');
+			wrap.appendChild(btn);
+			wrap.appendChild(status);
+			pager.parentNode.insertBefore(wrap, pager);
+			pager.classList.add('cb-pager-hidden');
+
+			function findList(d) {
+				var queries = d.querySelectorAll('.wp-block-query');
+				for (var i = 0; i < queries.length; i++) {
+					var n = queries[i].querySelector('.wp-block-query-pagination a');
+					if (!key || (n && n.href.indexOf(key) !== -1)) {
+						var l = queries[i].querySelector('.wp-block-post-template');
+						if (l) { return { list: l, query: queries[i] }; }
+					}
+				}
+				var all = d.querySelectorAll('.wp-block-query');
+				var idx = Array.prototype.indexOf.call(doc.querySelectorAll('.wp-block-query'), query);
+				return all[idx] ? { list: all[idx].querySelector('.wp-block-post-template'), query: all[idx] } : null;
+			}
+
+			btn.addEventListener('click', function () {
+				if (!nextUrl || btn.disabled) { return; }
+				btn.disabled = true;
+				btn.classList.add('is-loading');
+				btn.textContent = t('loading', 'Loading…');
+				fetch(nextUrl, { credentials: 'same-origin' })
+					.then(function (r) { if (!r.ok) { throw new Error(r.status); } return r.text(); })
+					.then(function (html) {
+						var d = new DOMParser().parseFromString(html, 'text/html');
+						var found = findList(d);
+						if (!found || !found.list) { throw new Error('no list'); }
+						var items = Array.prototype.slice.call(found.list.children);
+						var first = null;
+						items.forEach(function (li) {
+							var node = doc.importNode(li, true);
+							node.classList.add('cb-appear');
+							list.appendChild(node);
+							if (!first) { first = node; }
+						});
+						var n = found.query.querySelector('.wp-block-query-pagination-next');
+						nextUrl = n ? n.href : '';
+						status.textContent = items.length + ' ' + t('morePosts', 'more posts loaded');
+						if (first) {
+							var a = first.querySelector('a');
+							if (a) { a.focus({ preventScroll: true }); }
+						}
+						if (!nextUrl) {
+							btn.hidden = true;
+							status.textContent = t('allLoaded', 'You’ve reached the end. That’s every post.');
+						}
+					})
+					.catch(function () {
+						// Fall back to the normal page link
+						window.location.href = nextUrl;
+					})
+					.then(function () {
+						btn.disabled = false;
+						btn.classList.remove('is-loading');
+						btn.textContent = t('loadMore', 'Load more');
+					});
+			});
+		});
+	}
+
 	/* Random picks: the page (cached) carries a random pool; show a fresh random few on every view */
 	function initRandom() {
 		Array.prototype.forEach.call(doc.querySelectorAll('[data-cb-random]'), function (list) {
@@ -801,6 +884,7 @@
 		initFeedback();
 		initLikes();
 		initRandom();
+		initLoadMore();
 		initLightbox();
 		tidyPostEnd();
 		doc.dispatchEvent(new CustomEvent('cb:ready'));

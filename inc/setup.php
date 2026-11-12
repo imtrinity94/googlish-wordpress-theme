@@ -55,6 +55,10 @@ function cb_enqueue_assets() {
 				'output'     => __( 'Output', 'cloudblogger' ),
 				'link'       => __( 'Link', 'cloudblogger' ),
 				'like'       => __( 'Like', 'cloudblogger' ),
+				'loadMore'   => __( 'Load more', 'cloudblogger' ),
+				'loading'    => __( 'Loading…', 'cloudblogger' ),
+				'morePosts'  => __( 'more posts loaded', 'cloudblogger' ),
+				'allLoaded'  => __( 'You’ve reached the end. That’s every post.', 'cloudblogger' ),
 				'liked'      => __( 'Liked', 'cloudblogger' ),
 				'code'       => __( 'Code', 'cloudblogger' ),
 				/* translators: %d: number of lines */

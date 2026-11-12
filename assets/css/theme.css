@@ -1127,3 +1127,24 @@ body.cb-no-scroll { overflow: hidden; }
 .cb-prose img { max-width: 100%; height: auto !important; }
 .cb-prose .wp-block-image.is-resized img, .cb-prose .wp-block-image img[style*="width"] { max-width: 100% !important; }
 .cb-prose .wp-block-image.is-resized { max-width: 100%; }
+
+/* ---------- Load more (post lists) ---------- */
+.cb-pager-hidden { display: none !important; }
+.cb-loadmore { display: flex; flex-direction: column; align-items: center; gap: .5rem; margin-top: 2rem; }
+.cb-loadmore__btn {
+	display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-width: 12rem; height: 48px; padding: 0 1.75rem;
+	border: 1px solid var(--cb-line); border-radius: 999px; background: var(--cb-canvas); color: var(--cb-accent-ink);
+	font: 500 1rem/1 var(--wp--preset--font-family--body); cursor: pointer; transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.cb-loadmore__btn:hover { background: var(--cb-accent-soft); border-color: transparent; }
+.cb-loadmore__btn:focus-visible { outline: 2px solid var(--cb-accent); outline-offset: 3px; }
+.cb-loadmore__btn.is-loading { color: var(--cb-muted); cursor: progress; }
+.cb-loadmore__btn.is-loading::before {
+	content: ""; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--cb-line); border-top-color: var(--cb-accent);
+	animation: cb-spin .8s linear infinite;
+}
+@keyframes cb-spin { to { transform: rotate(360deg); } }
+.cb-loadmore__status { margin: 0; min-height: 1.2em; font-size: .875rem; color: var(--cb-muted); }
+.cb-appear { animation: cb-appear .35s ease-out both; }
+@keyframes cb-appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .cb-appear, .cb-loadmore__btn.is-loading::before { animation: none; } }
