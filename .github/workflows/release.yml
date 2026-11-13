@@ -1,0 +1,90 @@
+name: Build and release
+
+# Every push and pull request: check the code and build both zips (downloadable from the run's Artifacts).
+# Push to main: if the theme or plugin version is new, publish a GitHub Release with the WordPress-ready zip
+# and the matching CHANGELOG section as release notes.
+#   Theme release tag:  v<theme version>                    e.g. v2.9.3   -> googlish-2.9.3.zip
+#   Plugin release tag: googlish-personal-v<plugin version> e.g. googlish-personal-v1.0.1
+# To release: bump the version (style.css, functions.php, readme.txt), add a CHANGELOG entry, push to main.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    outputs:
+      theme_version: ${{ steps.build.outputs.theme_version }}
+      plugin_version: ${{ steps.build.outputs.plugin_version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: none
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check and build zips
+        id: build
+        run: ./scripts/build.sh
+
+      - name: Upload zips as run artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wordpress-zips
+          path: dist/*.zip
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    env:
+      GH_TOKEN: ${{ github.token }}
+      THEME_VERSION: ${{ needs.build.outputs.theme_version }}
+      PLUGIN_VERSION: ${{ needs.build.outputs.plugin_version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: wordpress-zips
+          path: dist
+
+      - name: Release the theme (if this version is new)
+        run: |
+          TAG="v$THEME_VERSION"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Theme release $TAG already exists, nothing to do."
+          else
+            ./scripts/release-notes.sh CHANGELOG.md "$THEME_VERSION" > notes.md
+            printf '\n---\n**Install:** download `googlish-%s.zip` below, then in WordPress go to Appearance → Themes → Add New Theme → Upload Theme. If Googlish is already installed, choose **Replace current with uploaded**.\n' "$THEME_VERSION" >> notes.md
+            gh release create "$TAG" "dist/googlish-$THEME_VERSION.zip" \
+              --target "$GITHUB_SHA" --title "Googlish $THEME_VERSION" --notes-file notes.md --latest
+          fi
+
+      - name: Release the Googlish Personal plugin (if this version is new)
+        run: |
+          TAG="googlish-personal-v$PLUGIN_VERSION"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Plugin release $TAG already exists, nothing to do."
+          else
+            ./scripts/release-notes.sh plugin/googlish-personal/CHANGELOG.md "$PLUGIN_VERSION" > notes.md
+            printf '\n---\n**Install:** edit `data/profile.json` with your details first (see docs/SETUP.md), or install as is to try it. In WordPress go to Plugins → Add New Plugin → Upload Plugin. If it is already installed, choose **Replace current with uploaded**.\n' >> notes.md
+            gh release create "$TAG" "dist/googlish-personal-$PLUGIN_VERSION.zip" \
+              --target "$GITHUB_SHA" --title "Googlish Personal $PLUGIN_VERSION" --notes-file notes.md --latest=false
+          fi

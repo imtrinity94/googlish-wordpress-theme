@@ -23,15 +23,12 @@ Live example: [cloudblogger.co.in](https://cloudblogger.co.in/) runs exactly thi
 
 ## 2. Get the two zips
 
-**Theme:**
-1. Download this repository (**Code → Download ZIP**) and unzip it.
-2. Rename the unzipped folder to `googlish`.
-3. Delete `plugin/` and `docs/` from it (optional; it works either way).
-4. Zip the folder again.
+Download both from the repository's [Releases page](https://github.com/imtrinity94/googlish-wordpress-theme/releases):
 
-The folder name matters. WordPress recognises a theme by its folder, so always use `googlish` and updates will replace it cleanly.
+- **Theme:** the latest `v…` release → `googlish-<version>.zip`. It already unpacks to a folder named `googlish`, which is what lets future updates replace it cleanly. Upload it as is; don't unzip or rename anything.
+- **Plugin:** the latest `googlish-personal-v…` release → `googlish-personal-<version>.zip`. Unzip it, fill in your details (step 4 below), and zip the `googlish-personal` folder again so the zip contains that folder at the top.
 
-**Plugin:** zip the folder `plugin/googlish-personal` on its own, so the zip contains a `googlish-personal` folder at the top.
+Building it yourself instead: clone the repository and run `./scripts/build.sh`. Both zips land in `dist/`.
 
 ## 3. Install
 
@@ -133,7 +130,7 @@ You don't configure any of this. The theme reads it from your site.
 
 ## 7. Updating
 
-- **Theme update:** download the new release, make sure the folder is named `googlish`, then upload with **Replace current with uploaded**. Your details are untouched because they live in the plugin.
+- **Theme update:** download `googlish-<version>.zip` from the latest release and upload it with **Replace current with uploaded**. Your details are untouched because they live in the plugin.
 - **Changing your details:** edit `profile.json`, zip the plugin, upload with **Replace current with uploaded**.
 - If a page doesn't change after a theme update, you've customised that template in **Appearance → Editor**. Open it and choose **Reset**.
 

@@ -3,6 +3,12 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [Tooling] - 2026-11-13
+
+### Added
+- GitHub Actions pipeline (`.github/workflows/release.yml`). It checks every push and pull request (PHP and JS syntax, JSON, matching versions, CHANGELOG entry), builds WordPress-ready zips, and publishes a GitHub Release for each new theme or plugin version, with the CHANGELOG section as release notes.
+- `scripts/build.sh` to build the same zips locally, and `scripts/release-notes.sh`.
+
 ## [2.9.3] - 2026-11-12
 
 ### Fixed

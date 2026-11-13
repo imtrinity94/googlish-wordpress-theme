@@ -26,6 +26,15 @@ Renders of the theme with sample content.
 | --- | --- |
 | ![Post in dark mode](docs/screenshots/post-dark.jpg) | <img src="docs/screenshots/mobile-home.jpg" width="300" alt="Home page on a phone"> |
 
+## Releases
+
+Every version is built and published automatically by GitHub Actions ([`.github/workflows/release.yml`](.github/workflows/release.yml)):
+
+- On every push and pull request it checks the code (PHP and JavaScript syntax, valid JSON, matching version numbers, a CHANGELOG entry) and builds both zips. You can download them from the run's **Artifacts**.
+- On a push to `main` with a new version, it publishes a GitHub Release (`v<version>` for the theme, `googlish-personal-v<version>` for the plugin). The zip is attached, ready to upload to WordPress, and the CHANGELOG section becomes the release notes.
+
+To build locally: `./scripts/build.sh` (writes to `dist/`).
+
 ## See it live
 
 The theme runs [cloudblogger.co.in](https://cloudblogger.co.in/). Have a look at:
@@ -92,8 +101,8 @@ Googlish is two pieces:
 
 Everything else comes from your WordPress content: posts, excerpts, featured images, categories, tags, sticky posts, comments and Jetpack stats.
 
-1. Edit `plugin/googlish-personal/data/profile.json` with your details, put your photo in `plugin/googlish-personal/assets/`, then zip the `googlish-personal` folder.
-2. Zip the theme with its folder named `googlish`.
+1. Download the ready-made zips from the [latest release](https://github.com/imtrinity94/googlish-wordpress-theme/releases/latest): `googlish-<version>.zip` (theme) and, from the `googlish-personal-v…` release, `googlish-personal-<version>.zip` (plugin).
+2. Unzip the plugin, fill in `data/profile.json` with your details, put your photo in `assets/`, and zip the `googlish-personal` folder again.
 3. In WordPress, upload and activate the plugin (Plugins → Add New Plugin → Upload), then the theme (Appearance → Themes → Upload → Live Preview → Activate).
 4. Check the WordPress settings in the [setup guide](docs/SETUP.md#6-wordpress-settings-to-check-once).
 
