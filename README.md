@@ -8,7 +8,7 @@ A WordPress block theme for technical blogs, styled after Google's blogs and Goo
 
 **New here? Start with the [setup guide](docs/SETUP.md) (theme + plugin, about 30 minutes), then the [writing and customisation guide](docs/GUIDE.md).**
 
-Current version: **2.9.3**. See [CHANGELOG.md](CHANGELOG.md).
+Current version: **2.9.4**. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Screenshots
 
@@ -58,7 +58,7 @@ The theme runs [cloudblogger.co.in](https://cloudblogger.co.in/). Have a look at
 - Hero band with breadcrumb, title, standfirst, date, updated date, read time and views, author and Share menu.
 - "In this article" table of contents drawn as a workflow, sticky on wide screens, with reading progress.
 - Right panel: this post's stats, Share this post, and "Was this helpful?" with Send feedback.
-- Image viewer: click any image to enlarge, with previous/next, keyboard and swipe.
+- Image viewer: click any image to see it fitted to the screen, zoom in and out (buttons, wheel, double-click, pinch) and drag around, with previous/next, keyboard and swipe.
 - Like button in the theme's style; its count includes existing WordPress.com likes.
 - More from the blog: three random posts, different on every view.
 - "Post without table of contents" template for short posts.

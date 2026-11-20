@@ -3,6 +3,14 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.9.4] - 2026-11-20
+
+### Fixed
+- Image viewer: tall images (long diagrams, phone screenshots) were larger than the screen and ran off the bottom. Every image now fits the screen when it opens.
+
+### Added
+- Zoom in the image viewer: zoom buttons and a percentage (click it to fit again) in the top bar, mouse wheel or trackpad pinch towards the pointer, double-click or double-tap to zoom in, pinch on phones, and drag to move around a zoomed image. Keyboard: `+`, `-`, `0` to fit, arrow keys to move, Esc to fit and then close. Swiping to the next image still works when the image fits.
+
 ## [Tooling] - 2026-11-13
 
 ### Added
