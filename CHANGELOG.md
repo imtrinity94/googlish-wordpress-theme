@@ -3,6 +3,12 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.12.2] - 2026-11-20
+
+### Fixed
+- Small images placed inside a line of text (avatars, icons, badges) sat on the text baseline, so the text lined up with the bottom of the image instead of its middle. They are now centred on the line.
+- A quote's attribution line that starts with a photo (for example a testimonial with the commenter's picture and name) now reads as a byline: a 40px round avatar, centred beside smaller muted text.
+
 ## [2.12.1] - 2026-11-20
 
 ### Fixed
