@@ -128,6 +128,25 @@ You don't configure any of this. The theme reads it from your site.
 - **Settings → Discussion:** tick "Email me whenever a comment is held for moderation" to get an email for each "Send feedback" note.
 - **Jetpack → Settings:** turn on Stats, Likes, Subscriptions and Comments. You can turn off Jetpack's own sharing buttons; the theme has its own.
 
+### Search engines
+
+The theme keeps Google on your posts and off the many copies WordPress makes of them. You don't need to do anything:
+
+| URL type | What the theme does |
+| --- | --- |
+| Home, categories, tags, author, date archives | Canonical link to the clean URL (no query strings) |
+| Date archives, author archive, categories and tags with fewer than 2 posts | `noindex, follow` |
+| Pages opened with `?query-N-page=` (Load more fallback links) | `noindex, follow` |
+| `/comment-page-N/` | Canonical to the post |
+| Feeds | `X-Robots-Tag: noindex, follow` header |
+| Attachment pages (`/image-name/`) | 301 to the post, or to the file |
+| `?replytocom=` | Removed from Reply links; old links 301 to the comment |
+| Jetpack's sharing buttons | Turned off (the theme has its own Share menu), so no `?share=` links |
+
+If you use Yoast, Rank Math, SEOPress or All in One SEO, the theme leaves all of this to the plugin. To turn it off yourself: `add_filter( 'googlish_seo', '__return_false' );`. Each part has its own filter (see CHANGELOG 2.10.0).
+
+After switching to Googlish, open Google Search Console → **Sitemaps** and submit `sitemap.xml` again, so Google picks up your current posts quickly.
+
 ## 7. Updating
 
 - **Theme update:** download `googlish-<version>.zip` from the latest release and upload it with **Replace current with uploaded**. Your details are untouched because they live in the plugin.

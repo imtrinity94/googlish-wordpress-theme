@@ -8,7 +8,7 @@ A WordPress block theme for technical blogs, styled after Google's blogs and Goo
 
 **New here? Start with the [setup guide](docs/SETUP.md) (theme + plugin, about 30 minutes), then the [writing and customisation guide](docs/GUIDE.md).**
 
-Current version: **2.9.4**. See [CHANGELOG.md](CHANGELOG.md).
+Current version: **2.10.0**. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Screenshots
 
@@ -75,6 +75,7 @@ The theme runs [cloudblogger.co.in](https://cloudblogger.co.in/). Have a look at
 - Patterns: before you begin, what's next, tested on, numbered steps, before and after, video and screenshot frames, code with file name, download from GitHub, standard post outline.
 
 **Everywhere**
+- Search engine hygiene: canonical links on archives; noindex on thin pages (date, author, tiny tags), feeds and loop-pagination copies; attachment pages and `?replytocom` links redirected. Off automatically when an SEO plugin is active. See the [setup guide](docs/SETUP.md#search-engines).
 - Light and dark modes (follows the system, with a toggle).
 - Google Sans Flex and Google Sans Code, bundled.
 - Hamburger menu on screens under 1100px.

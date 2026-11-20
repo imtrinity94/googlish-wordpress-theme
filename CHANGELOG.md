@@ -3,6 +3,18 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.10.0] - 2026-11-20
+
+### Added
+- Search engine hygiene (`inc/seo.php`), so Google spends its time on posts instead of copies of them:
+  - Canonical links on the home page, categories, tags, author and date archives (and their /page/N/), without query strings. Comment pages (/comment-page-1/) point to the post.
+  - "noindex, follow" on date archives, the author archive, categories and tags with fewer than 2 posts, and any page opened with query-loop pagination parameters (`?query-21-page=4`).
+  - Feeds send `X-Robots-Tag: noindex, follow`. Feed readers are unaffected.
+  - Attachment pages (`/image-42/`, `/feed/?attachment_id=42`) redirect (301) to the post the image belongs to, or to the file.
+  - Reply links no longer carry `?replytocom=`. Old `?replytocom=` links redirect to the comment.
+  - Jetpack's own sharing buttons are turned off; they were already hidden behind the theme's Share menu and only added `?share=` links for Google to crawl.
+- Switches off by itself when Yoast, Rank Math, SEOPress or All in One SEO is active. Filters: `googlish_seo`, `googlish_archive_canonical`, `googlish_noindex`, `googlish_noindex_dates`, `googlish_noindex_author`, `googlish_noindex_term_min_posts`, `googlish_noindex_feeds`, `googlish_redirect_attachments`, `googlish_hide_jetpack_sharing`.
+
 ## [2.9.4] - 2026-11-20
 
 ### Fixed
