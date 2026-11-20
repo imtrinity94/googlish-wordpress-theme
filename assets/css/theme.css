@@ -482,6 +482,11 @@ h1, h2, h3, h4 { text-wrap: balance; color: var(--cb-ink); }
 .cb-prose .wp-block-quote > :first-child, .cb-prose blockquote > :first-child { margin-top: 0; }
 .cb-prose .wp-block-quote > :last-child, .cb-prose blockquote > :last-child { margin-bottom: 0; }
 .cb-prose .wp-block-quote::before, .cb-prose blockquote::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px; background: var(--cb-gradient); }
+/* Small images placed inside a line of text (avatars, icons, badges) sit centred on the line, not on its baseline. */
+.cb-prose :is(p, li, td, th, h2, h3, h4) > img, .cb-prose :is(p, li, td) > a > img { vertical-align: middle; }
+/* A quote's attribution line that starts with a photo: small round avatar, muted text, like a byline. */
+.cb-prose :is(.wp-block-quote, blockquote) p:has(> img:first-child) { font-size: .875em; color: var(--cb-muted); line-height: 1.5; }
+.cb-prose :is(.wp-block-quote, blockquote) p > img:first-child { width: 40px !important; height: 40px !important; object-fit: cover; border-radius: 999px; margin: 0 .65rem 0 0; vertical-align: middle; }
 .cb-prose .wp-block-quote cite { display: block; margin-top: .75rem; font-size: .875rem; color: var(--cb-muted); font-style: normal; }
 .cb-prose :is(h2, h3)[id] { position: relative; }
 .cb-anchor { margin-left: .4rem; color: var(--cb-muted); text-decoration: none !important; opacity: 0; font-weight: 400; }
