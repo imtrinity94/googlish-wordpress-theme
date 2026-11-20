@@ -1214,7 +1214,7 @@ body.cb-no-scroll { overflow: hidden; }
 	--cb-note-bg: #f1ebdf; --cb-tip-bg: #f1ebdf; --cb-important-bg: #f1ebdf; --cb-caution-bg: #f1ebdf; --cb-critical-bg: #f1ebdf;
 	--cb-syn-comment: #7a7366; --cb-syn-keyword: #7b3fb8; --cb-syn-string: #2f6e3a; --cb-syn-number: #9a5b10; --cb-syn-title: #2f5a95; --cb-syn-built: #22707a; --cb-syn-attr: #8a3f9e; --cb-syn-tag: #a8382f;
 	--cb-hero: transparent; --cb-shadow-sm: none; --cb-shadow: none;
-	--cb-read-fs: 20px; --cb-read-font: var(--wp--preset--font-family--body);
+	--cb-read-font: var(--wp--preset--font-family--body);
 	background: var(--cb-canvas);
 }
 :root[data-read="on"][data-read-bg="white"] body.single { --cb-canvas: #ffffff; --cb-surface: #f5f6f8; --cb-surface-2: #eceef2; --cb-ink: #1f2328; --cb-ink-2: #2e3238; --cb-muted: #5f6570; --cb-line: #e2e6ee; --cb-accent: #1a6ae8; --cb-accent-ink: #174ea6; --cb-accent-soft: #e8f0fe; --cb-on-accent: #ffffff;
@@ -1242,7 +1242,9 @@ body.cb-no-scroll { overflow: hidden; }
 
 /* Only the top bar, the title with its image, and the post itself. */
 :root[data-read="on"] body.single :is(.cb-crumbs, .cb-standfirst-grid, .cb-byline, .cb-article__rail, .cb-article__aside, .cb-toc-mobile, .cb-related, .cb-like, .cb-feedback, .cb-post-foot, .cb-subscribe, .wp-block-jetpack-subscriptions, .sharedaddy, .jp-relatedposts, .cb-footer, .acb-root) { display: none !important; }
-:root[data-read="on"] body.single .cb-header { position: sticky; top: 0; background: color-mix(in srgb, var(--cb-canvas) 94%, transparent); border-bottom: 1px solid var(--cb-line); }
+/* The top bar stays pinned while reading (its wrapper is pinned, since the bar alone is as tall as the wrapper). */
+:root[data-read="on"] body.single .wp-block-template-part:has(> .cb-header) { position: sticky; top: var(--wp-admin--admin-bar--height, 0px); z-index: 60; }
+:root[data-read="on"] body.single .cb-header { position: relative; background: color-mix(in srgb, var(--cb-canvas) 94%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--cb-line); }
 :root[data-read="on"] body.single .cb-wash::before, :root[data-read="on"] body.single .cb-wash::after { display: none; }
 
 /* One column, 90% of the screen: title and small image side by side, then everything at the same width. */
@@ -1258,9 +1260,10 @@ body.cb-no-scroll { overflow: hidden; }
 @media (max-width: 600px) { :root[data-read="on"] body.single main > .cb-hero-image { width: 96px; border-radius: 10px; } }
 
 /* Text: chosen size and font, full column width. */
-:root[data-read="on"] body.single .cb-prose { font-family: var(--cb-read-font); font-size: var(--cb-read-fs); line-height: 1.75; color: var(--cb-ink-2); }
+:root[data-read="on"] body.single .cb-prose { font-family: var(--cb-read-font); font-size: var(--cb-read-fs, 20px); line-height: 1.75; color: var(--cb-ink-2); }
 :root[data-read="on"] body.single .cb-prose > * { max-width: 100% !important; width: auto; margin-left: 0 !important; margin-right: 0 !important; }
 :root[data-read="on"] body.single .cb-prose :is(h2, h3, h4) { font-family: var(--cb-read-font); }
+:root[data-read="on"] body.single .cb-prose :is(.is-style-cb-note, .is-style-cb-tip, .is-style-cb-important, .is-style-cb-caution, .is-style-cb-warning, .is-style-cb-critical) { font-family: var(--cb-read-font); font-size: .9em !important; }
 
 /* Images fill the column (small ones keep their size and sit on the left edge). */
 :root[data-read="on"] body.single .cb-prose > :is(figure, .wp-block-image, .wp-block-table, .wp-block-embed, .wp-block-video, .wp-block-gallery, .wp-block-columns, .cb-tabs) { width: 100%; }
@@ -1269,7 +1272,7 @@ body.cb-no-scroll { overflow: hidden; }
 :root[data-read="on"] body.single .cb-prose figcaption { text-align: left; font-size: .85em; }
 
 /* Code: plain monospace in a rounded box, a shade lighter than the page. */
-:root[data-read="on"] body.single .cb-prose :is(.cb-code, pre) { width: 100%; background: var(--cb-read-box) !important; border: 0 !important; border-radius: 14px; box-shadow: none !important; }
+:root[data-read="on"] body.single .cb-prose :is(.cb-code, pre) { box-sizing: border-box; width: 100%; background: var(--cb-read-box) !important; border: 0 !important; border-radius: 14px; box-shadow: none !important; }
 :root[data-read="on"] body.single .cb-code__bar { background: transparent !important; border: 0 !important; }
 :root[data-read="on"] body.single .cb-code__gutter { background: transparent !important; border: 0 !important; }
 :root[data-read="on"] body.single .cb-prose pre, :root[data-read="on"] body.single .cb-prose pre code, :root[data-read="on"] body.single .cb-prose :not(pre) > code { font-family: var(--wp--preset--font-family--mono); }
