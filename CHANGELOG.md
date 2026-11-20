@@ -3,6 +3,20 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.12.0] - 2026-11-20
+
+### Changed
+- Read mode redesigned: only the top bar, the title with a small version of the featured image beside it, and the post itself (text, images, code). Breadcrumbs, stats, byline, Like, feedback, tags, comments, related posts, subscribe box and footer are hidden.
+- Text, images and code now share one column at 90% of the screen, all starting at the same left edge.
+- The top bar stays pinned at the top while reading.
+- Code in read mode: monospace in a plain rounded box, a shade lighter than the page.
+
+### Added
+- Reader settings ("Aa" in the top bar, shown in read mode): text size in five steps, font (Sans, Serif, System) and background (Match light/dark, Paper, White, Sepia, Grey, Night). Saved in the browser and applied before the page draws.
+
+### Fixed
+- Code blocks saved as CodeMirror markup (`div.wp-block-code` with `.cm-line` rows) showed as plain unstyled text with no box. They are now turned into normal code blocks with the theme's styling, highlighting and Copy button, in and out of read mode.
+
 ## [2.11.0] - 2026-11-20
 
 ### Added
