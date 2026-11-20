@@ -25,7 +25,7 @@ add_action( 'after_setup_theme', 'cb_setup' );
  * Apply the saved light/dark and read mode choices before first paint to avoid a flash.
  */
 function cb_theme_mode_script() {
-	$js = "(function(){try{var t=localStorage.getItem('cb-theme');var d=document.documentElement;if(t==='dark'||t==='light'){d.setAttribute('data-theme',t);}if(localStorage.getItem('cb-read')==='on'){d.setAttribute('data-read','on');}}catch(e){}})();";
+	$js = "(function(){try{var t=localStorage.getItem('cb-theme');var d=document.documentElement;if(t==='dark'||t==='light'){d.setAttribute('data-theme',t);}if(localStorage.getItem('cb-read')==='on'){d.setAttribute('data-read','on');}var z=[16,18,20,22,25][localStorage.getItem('cb-read-size')||2];if(z){d.style.setProperty('--cb-read-fs',z+'px');}d.setAttribute('data-read-font',localStorage.getItem('cb-read-font')||'sans');d.setAttribute('data-read-bg',localStorage.getItem('cb-read-bg')||'auto');}catch(e){}})();";
 	wp_print_inline_script_tag( $js, array( 'id' => 'cb-theme-mode' ) );
 }
 add_action( 'wp_head', 'cb_theme_mode_script', 0 );
@@ -79,6 +79,21 @@ function cb_enqueue_assets() {
 				'zoomFit'    => __( 'Fit to screen', 'cloudblogger' ),
 				'readMode'   => __( 'Read mode', 'cloudblogger' ),
 				'exitReadMode' => __( 'Leave read mode', 'cloudblogger' ),
+				'readSettings' => __( 'Text and background', 'cloudblogger' ),
+				'textSize'   => __( 'Text size', 'cloudblogger' ),
+				'smaller'    => __( 'Smaller text', 'cloudblogger' ),
+				'larger'     => __( 'Larger text', 'cloudblogger' ),
+				'font'       => __( 'Font', 'cloudblogger' ),
+				'fontSans'   => __( 'Sans', 'cloudblogger' ),
+				'fontSerif'  => __( 'Serif', 'cloudblogger' ),
+				'fontSystem' => __( 'System', 'cloudblogger' ),
+				'background' => __( 'Background', 'cloudblogger' ),
+				'bgAuto'     => __( 'Match light or dark mode', 'cloudblogger' ),
+				'bgPaper'    => __( 'Paper', 'cloudblogger' ),
+				'bgWhite'    => __( 'White', 'cloudblogger' ),
+				'bgSepia'    => __( 'Sepia', 'cloudblogger' ),
+				'bgGrey'     => __( 'Grey', 'cloudblogger' ),
+				'bgNight'    => __( 'Night', 'cloudblogger' ),
 				'copiedLink' => __( 'Link copied', 'cloudblogger' ),
 				'fbYes'      => __( 'Thanks for letting me know.', 'cloudblogger' ),
 				'fbNo'       => __( 'Thanks. Tell me what was missing so I can fix it.', 'cloudblogger' ),
