@@ -3,6 +3,13 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.12.1] - 2026-11-20
+
+### Fixed
+- Quotes (Quote block) were styled as large pull-quotes (22px), which made longer quoted notes look oversized. They are now a quiet card at reading size with the accent bar on the left, in normal and read mode.
+- Read mode: Note, Pro tip, Important, Caution and Warning boxes kept their bright default colours on the paper and night backgrounds. They now take a soft tint of the page, with text in the body colour and the label and icon in a muted tone, for every background.
+- Read mode: the title and its image sat right under the top bar. There is now space above them and before the post text.
+
 ## [2.12.0] - 2026-11-20
 
 ### Changed
