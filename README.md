@@ -8,7 +8,7 @@ A WordPress block theme for technical blogs, styled after Google's blogs and Goo
 
 **New here? Start with the [setup guide](docs/SETUP.md) (theme + plugin, about 30 minutes), then the [writing and customisation guide](docs/GUIDE.md).**
 
-Current version: **2.10.0**. See [CHANGELOG.md](CHANGELOG.md).
+Current version: **2.11.0**. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Screenshots
 
@@ -61,6 +61,7 @@ The theme runs [cloudblogger.co.in](https://cloudblogger.co.in/). Have a look at
 - Image viewer: click any image to see it fitted to the screen, zoom in and out (buttons, wheel, double-click, pinch) and drag around, with previous/next, keyboard and swipe.
 - Like button in the theme's style; its count includes existing WordPress.com likes.
 - More from the blog: three random posts, different on every view.
+- Read mode (book icon in the top bar): images and code at 90% of the screen, text at a comfortable width, soft paper colours, side panels hidden; switching tears the page off like a sheet from a pad.
 - "Post without table of contents" template for short posts.
 
 **Code**

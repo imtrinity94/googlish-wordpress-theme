@@ -1002,6 +1002,104 @@
 		});
 	}
 
+	/* ---------------- Read mode: wide media, comfortable text, soft paper colours ---------------- */
+	function initReadMode() {
+		var prose = doc.querySelector('.cb-article .cb-prose');
+		var anchor = doc.querySelector('.cb-theme-toggle');
+		if (!prose || !anchor) { return; }
+		var ICON_BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2z"/><path d="M12 6.5v13"/></svg>';
+		var btn = doc.createElement('button');
+		btn.type = 'button';
+		btn.className = 'cb-icon-btn cb-read-toggle';
+		btn.innerHTML = ICON_BOOK;
+		btn.setAttribute('aria-label', t('readMode', 'Read mode'));
+		btn.title = t('readMode', 'Read mode');
+		anchor.parentNode.insertBefore(btn, anchor);
+
+		// Large images get a bigger source and fill the wide column; small ones keep their own size.
+		var imgs = Array.prototype.slice.call(prose.querySelectorAll('img'));
+		function largest(img) {
+			var max = parseInt(img.getAttribute('width'), 10) || 0;
+			var o = (img.getAttribute('data-orig-size') || '').split(',');
+			if (o.length === 2) { max = Math.max(max, parseInt(o[0], 10) || 0); }
+			(img.getAttribute('srcset') || '').split(',').forEach(function (part) {
+				var w = parseInt((part.trim().split(/\s+/)[1] || ''), 10);
+				if (w > max) { max = w; }
+			});
+			return max;
+		}
+		function prepareImages(on) {
+			imgs.forEach(function (img) {
+				if (on) {
+					if (largest(img) < 900 || img.closest('.cb-code')) { return; }
+					if (!img.hasAttribute('data-cb-sizes')) { img.setAttribute('data-cb-sizes', img.getAttribute('sizes') || ''); }
+					if (img.getAttribute('srcset')) { img.setAttribute('sizes', '90vw'); }
+					img.classList.add('cb-read-wide');
+				} else if (img.hasAttribute('data-cb-sizes')) {
+					var sz = img.getAttribute('data-cb-sizes');
+					if (sz) { img.setAttribute('sizes', sz); } else { img.removeAttribute('sizes'); }
+					img.removeAttribute('data-cb-sizes');
+					img.classList.remove('cb-read-wide');
+				}
+			});
+		}
+		function isOn() { return root.getAttribute('data-read') === 'on'; }
+		function sync() {
+			btn.setAttribute('aria-pressed', isOn() ? 'true' : 'false');
+			btn.title = isOn() ? t('exitReadMode', 'Leave read mode') : t('readMode', 'Read mode');
+		}
+		// Keep the reader on the same paragraph when the layout changes.
+		function keepPlace(fn) {
+			var kids = prose.children, mark = null, top = 0;
+			for (var i = 0; i < kids.length; i++) {
+				var r = kids[i].getBoundingClientRect();
+				if (r.bottom > 80) { mark = kids[i]; top = r.top; break; }
+			}
+			fn();
+			if (mark && window.scrollY > 0) { window.scrollBy(0, mark.getBoundingClientRect().top - top); }
+		}
+		function apply(on) {
+			keepPlace(function () {
+				root.setAttribute('data-read', on ? 'on' : 'off');
+				prepareImages(on);
+			});
+			try { window.localStorage.setItem('cb-read', on ? 'on' : 'off'); } catch (e) { /* storage unavailable */ }
+			sync();
+		}
+		// A ragged edge for the sheet being torn off: same number of points flat and torn, so it animates.
+		function tearShape() {
+			var n = 28, flat = [], torn = [];
+			for (var i = 0; i <= n; i++) {
+				var x = (i / n * 100).toFixed(2) + '%';
+				var y = i === 0 || i === n ? 0 : (i % 2 ? 6 + Math.random() * 16 : Math.random() * 6);
+				flat.push(x + ' 0px');
+				torn.push(x + ' ' + y.toFixed(1) + 'px');
+			}
+			var tail = ', 100% 100%, 0% 100%';
+			root.style.setProperty('--cb-tear-flat', 'polygon(' + flat.join(', ') + tail + ')');
+			root.style.setProperty('--cb-tear-torn', 'polygon(' + torn.join(', ') + tail + ')');
+		}
+		function toggle() {
+			var next = !isOn();
+			var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			if (!doc.startViewTransition || calm) { apply(next); return; }
+			tearShape();
+			root.classList.add('cb-tearing');
+			var tr = doc.startViewTransition(function () { apply(next); });
+			var done = function () { root.classList.remove('cb-tearing'); };
+			tr.finished.then(done, done);
+		}
+		btn.addEventListener('click', toggle);
+		doc.addEventListener('keydown', function (e) {
+			if (e.key !== 'Escape' || !isOn() || doc.querySelector('.cb-lightbox:not([hidden])')) { return; }
+			var tag = (e.target && e.target.tagName) || '';
+			if (/INPUT|TEXTAREA|SELECT/.test(tag)) { return; }
+			toggle();
+		});
+		if (isOn()) { prepareImages(true); }
+		sync();
+	}
+
 	/* ---------------- End of post: Like into the feedback bar, subscribe form as a card ---------------- */
 	function tidyPostEnd() {
 		var body = doc.querySelector('.cb-article__body');
@@ -1033,6 +1131,7 @@
 		initRandom();
 		initLoadMore();
 		initLightbox();
+		initReadMode();
 		tidyPostEnd();
 		doc.dispatchEvent(new CustomEvent('cb:ready'));
 	}

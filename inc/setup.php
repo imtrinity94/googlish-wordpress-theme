@@ -22,10 +22,10 @@ function cb_setup() {
 add_action( 'after_setup_theme', 'cb_setup' );
 
 /**
- * Apply the saved light/dark choice before first paint to avoid a flash.
+ * Apply the saved light/dark and read mode choices before first paint to avoid a flash.
  */
 function cb_theme_mode_script() {
-	$js = "(function(){try{var t=localStorage.getItem('cb-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();";
+	$js = "(function(){try{var t=localStorage.getItem('cb-theme');var d=document.documentElement;if(t==='dark'||t==='light'){d.setAttribute('data-theme',t);}if(localStorage.getItem('cb-read')==='on'){d.setAttribute('data-read','on');}}catch(e){}})();";
 	wp_print_inline_script_tag( $js, array( 'id' => 'cb-theme-mode' ) );
 }
 add_action( 'wp_head', 'cb_theme_mode_script', 0 );
@@ -77,6 +77,8 @@ function cb_enqueue_assets() {
 				'zoomIn'     => __( 'Zoom in', 'cloudblogger' ),
 				'zoomOut'    => __( 'Zoom out', 'cloudblogger' ),
 				'zoomFit'    => __( 'Fit to screen', 'cloudblogger' ),
+				'readMode'   => __( 'Read mode', 'cloudblogger' ),
+				'exitReadMode' => __( 'Leave read mode', 'cloudblogger' ),
 				'copiedLink' => __( 'Link copied', 'cloudblogger' ),
 				'fbYes'      => __( 'Thanks for letting me know.', 'cloudblogger' ),
 				'fbNo'       => __( 'Thanks. Tell me what was missing so I can fix it.', 'cloudblogger' ),

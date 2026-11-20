@@ -1,5 +1,5 @@
 === Googlish ===
-Version: 2.10.0
+Version: 2.11.0
 Author: Mayank Goyal
 Requires at least: 6.5
 Requires PHP: 7.4

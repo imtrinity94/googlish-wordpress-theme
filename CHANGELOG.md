@@ -3,6 +3,17 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.11.0] - 2026-11-20
+
+### Added
+- Read mode on posts: a book icon in the top bar, next to the light/dark button.
+  - Images, code blocks, tables, videos and tabs widen to 90% of the screen. Large images load a sharper copy to fill the space.
+  - Text stays at a comfortable line length (about 70–80 characters), centred, slightly larger.
+  - Soft paper colours: warm off-white page, dark grey text, muted links and accents. In dark mode, a dim warm grey.
+  - The table of contents, right panel and "More from" cards step aside.
+  - Switching on or off tears the old page away like a sheet from a pad (about 0.8 s, once). Skipped for readers who ask their device for reduced motion, and in browsers without page transitions.
+  - The choice is remembered for the next post. Esc or the icon leaves read mode. The page keeps your reading position.
+
 ## [2.10.0] - 2026-11-20
 
 ### Added
