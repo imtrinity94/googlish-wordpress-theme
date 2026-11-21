@@ -3,6 +3,12 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.12.3] - 2026-11-21
+
+### Fixed
+- Phones: a long link in a comment (for example a LinkedIn URL in a reply) didn't wrap. It ran past the edge of the screen and made the whole page wider than the phone, so every section looked shifted with empty space beside it. Comment text, links and author names now wrap, and wide images, embeds and code in comments stay inside their card.
+- Safety net: the page itself can no longer scroll sideways because of one over-wide element (`overflow-x: clip` on the body, which keeps the pinned top bar working).
+
 ## [2.12.2] - 2026-11-20
 
 ### Fixed

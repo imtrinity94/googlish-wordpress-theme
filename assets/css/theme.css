@@ -1095,6 +1095,10 @@ body.cb-no-scroll { overflow: hidden; }
 .wp-block-post-comments-form .logged-in-as a { color: var(--cb-accent-ink); }
 .jetpack-comments-dialog, jetpack-comments-dialog { font-family: var(--wp--preset--font-family--body); }
 
+/* Safety net: one over-wide element (a long link, a wide embed) must never make the whole page scroll sideways.
+   clip (not hidden) keeps the sticky top bar working. */
+body { overflow-x: clip; }
+
 /* Comment list */
 .wp-block-comment-template { margin: 0 0 1rem; padding: 0; list-style: none; }
 .wp-block-comment-template > li { padding: 1rem 1.1rem; border-radius: 16px; background: var(--cb-surface); margin-bottom: .75rem; }
@@ -1105,6 +1109,12 @@ body.cb-no-scroll { overflow: hidden; }
 .wp-block-comment-date, .wp-block-comment-date a { color: var(--cb-muted); text-decoration: none; }
 .wp-block-comment-content { color: var(--cb-ink-2); }
 .wp-block-comment-content p { margin: .35rem 0; }
+/* Long links and words in comments wrap instead of pushing the page wider than the screen. */
+.wp-block-comments :is(.wp-block-comment-content, .comment-content, .comment-body, .wp-block-comment-author-name) { overflow-wrap: anywhere; word-break: break-word; }
+.wp-block-comments a { overflow-wrap: anywhere; word-break: break-word; }
+.wp-block-comments :is(.wp-block-columns, .wp-block-column, .wp-block-group, li) { min-width: 0; }
+.wp-block-comments :is(img, iframe, video, pre, table) { max-width: 100%; }
+.wp-block-comments pre { overflow-x: auto; }
 .wp-block-comment-reply-link a { display: inline-flex; align-items: center; height: 30px; padding: 0 .8rem; border-radius: 999px; border: 1px solid var(--cb-line); color: var(--cb-accent-ink); text-decoration: none; font-weight: 500; }
 .wp-block-comment-reply-link a:hover { background: var(--cb-accent-soft); border-color: transparent; }
 
