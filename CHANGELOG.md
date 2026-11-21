@@ -3,6 +3,11 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.12.5] - 2026-11-21
+
+### Fixed
+- Read mode: the small featured image beside the title kept the full banner's large corner radius, so on a 96–240px thumbnail it looked like a pill. It now has small corners (8px, 6px on phones) and no shadow.
+
 ## [2.12.4] - 2026-11-21
 
 ### Fixed

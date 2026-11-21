@@ -1277,11 +1277,11 @@ body { overflow-x: clip; }
 :root[data-read="on"] body.single main > .cb-article-hero { grid-column: 1; grid-row: 1; background: none; padding: 0 !important; }
 :root[data-read="on"] body.single main > .cb-article-hero > .alignwide { max-width: none !important; margin: 0 !important; }
 :root[data-read="on"] body.single .cb-article-hero .wp-block-post-title { font-family: var(--cb-read-font); font-size: clamp(1.6rem, 1.1rem + 1.5vw, 2.5rem); line-height: 1.2; margin: 0; max-width: none; }
-:root[data-read="on"] body.single main > .cb-hero-image { grid-column: 2; grid-row: 1; width: clamp(120px, 15vw, 240px); margin: 0 !important; border-radius: 14px; overflow: hidden; }
-:root[data-read="on"] body.single main > .cb-hero-image img { width: 100%; height: auto !important; aspect-ratio: 1200 / 630; object-fit: cover; }
+:root[data-read="on"] body.single main > .cb-hero-image { grid-column: 2; grid-row: 1; width: clamp(120px, 15vw, 240px); margin: 0 !important; border-radius: 8px; overflow: hidden; }
+:root[data-read="on"] body.single main > .cb-hero-image img { width: 100%; height: auto !important; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 8px; box-shadow: none; }
 :root[data-read="on"] body.single main > .cb-article { grid-column: 1 / -1; display: block; max-width: none !important; margin-top: clamp(1.5rem, 3vw, 2.5rem) !important; }
 :root[data-read="on"] body.single .cb-article__body { max-width: none; }
-@media (max-width: 600px) { :root[data-read="on"] body.single main > .cb-hero-image { width: 96px; border-radius: 10px; } }
+@media (max-width: 600px) { :root[data-read="on"] body.single main > .cb-hero-image, :root[data-read="on"] body.single main > .cb-hero-image img { border-radius: 6px; } :root[data-read="on"] body.single main > .cb-hero-image { width: 96px; } }
 
 /* Text: chosen size and font, full column width. */
 :root[data-read="on"] body.single .cb-prose { font-family: var(--cb-read-font); font-size: var(--cb-read-fs, 20px); line-height: 1.75; color: var(--cb-ink-2); }

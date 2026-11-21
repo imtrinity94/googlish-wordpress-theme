@@ -8,7 +8,7 @@ A WordPress block theme for technical blogs, styled after Google's blogs and Goo
 
 **New here? Start with the [setup guide](docs/SETUP.md) (theme + plugin, about 30 minutes), then the [writing and customisation guide](docs/GUIDE.md).**
 
-Current version: **2.12.4**. See [CHANGELOG.md](CHANGELOG.md).
+Current version: **2.12.5**. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Screenshots
 
