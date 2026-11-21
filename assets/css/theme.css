@@ -1266,7 +1266,9 @@ body { overflow-x: clip; }
 :root[data-read="on"] body.single :is(.cb-crumbs, .cb-standfirst-grid, .cb-byline, .cb-article__rail, .cb-article__aside, .cb-toc-mobile, .cb-related, .cb-like, .cb-feedback, .cb-post-foot, .cb-subscribe, .wp-block-jetpack-subscriptions, .sharedaddy, .jp-relatedposts, .cb-footer, .acb-root) { display: none !important; }
 /* The top bar stays pinned while reading (its wrapper is pinned, since the bar alone is as tall as the wrapper). */
 :root[data-read="on"] body.single .wp-block-template-part:has(> .cb-header) { position: sticky; top: var(--wp-admin--admin-bar--height, 0px); z-index: 60; }
-:root[data-read="on"] body.single .cb-header { position: relative; background: color-mix(in srgb, var(--cb-canvas) 94%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--cb-line); }
+/* On phones the WordPress admin bar scrolls away with the page, so the bar pins to the very top there. */
+@media (max-width: 600px) { :root[data-read="on"] body.single .wp-block-template-part:has(> .cb-header) { top: 0; } }
+:root[data-read="on"] body.single .cb-header { position: relative; background: var(--cb-canvas); border-bottom: 1px solid var(--cb-line); }
 :root[data-read="on"] body.single .cb-wash::before, :root[data-read="on"] body.single .cb-wash::after { display: none; }
 
 /* One column, 90% of the screen: title and small image side by side, then everything at the same width. */

@@ -3,6 +3,12 @@
 All notable changes to this theme. Versions follow [Semantic Versioning](https://semver.org/).
 The version lives in three places: `style.css` (Version), `functions.php` (`CB_THEME_VERSION`) and `readme.txt`.
 
+## [2.12.4] - 2026-11-21
+
+### Fixed
+- Read mode on phones, when logged in: the pinned top bar stayed 46px below the top of the screen (the height of the WordPress admin bar), but on phones the admin bar scrolls away with the page. The bar floated with a gap above it, and the title and image showed through and slid underneath it. On screens up to 600px it now pins to the very top.
+- Read mode: the top bar is now solid instead of slightly see-through, so text scrolling under it never shows through.
+
 ## [2.12.3] - 2026-11-21
 
 ### Fixed
